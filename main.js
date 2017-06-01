@@ -13,6 +13,8 @@ var details = require("./components/views/details.vue")
 var login = require("./components/views/login.vue")
 var user = require("./components/views/user.vue")
 var add = require("./components/views/add.vue")
+var info = require("./components/views/info.vue")
+var collection = require("./components/views/collection.vue")
 import top from "./components/index/top.vue";
 var router = new VueRouter({
 	routes: [{
@@ -31,6 +33,19 @@ var router = new VueRouter({
 		path: "/login",
 		name:'login',
 		component: login
+	},{
+		path: "/collection",
+		name:'collection',
+		component: collection
+	},{
+		path: "/info",
+		name:'info',
+		component: info
+	},{
+		path: "/add",
+		name:'add',
+		component: add,
+		meta: { requiresAuth: true }
 	},{
 		path: "/user/:loginname",
 		name:'user',

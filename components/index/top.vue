@@ -4,6 +4,8 @@
 			<mu-icon-button icon="menu" slot="left" @click="toggle(true)" />
 			<mu-icon-button icon="expand_more" slot="right" />
 		</mu-appbar>
+		<router-link :to="{'name':'add'}" style="width:50px;height:50px;position:absolute;right:0;top:0;z-index:555">
+		</router-link>
 		<mu-drawer :open="open" :docked="docked" @close="toggle()">
 			<mu-list @itemClick="docked ? '' : toggle()">
 				<router-link :to="{'name':'login'}" @click.native="open = false" v-if="!userInfo.loginname">
@@ -14,19 +16,22 @@
 				<template v-if="userInfo.loginname">
 					<router-link :to="{'name':'user',params: { loginname: userInfo.loginname }}" @click.native="open = false">
 						<div class="portrait">
-							<img src="../../assets/imgs/timg.jpg" />
+							<img :src="userInfo.avatar_url" />
 						</div>
 						<mu-list-item :title="userInfo.loginname">
 							<mu-icon slot="left" value="person" />
 						</mu-list-item>
 					</router-link>
-
-					<mu-list-item title="消息">
-						<mu-icon slot="left" value="warning" />
-					</mu-list-item>
-					<mu-list-item title="收藏">
-						<mu-icon slot="left" value="grade" />
-					</mu-list-item>
+					<router-link :to="{'name':'info'}" @click.native="open = false">
+						<mu-list-item title="消息">
+							<mu-icon slot="left" value="warning" />
+						</mu-list-item>
+					</router-link>
+					<router-link :to="{'name':'collection'}" @click.native="open = false">
+						<mu-list-item title="收藏">
+							<mu-icon slot="left" value="grade" />
+						</mu-list-item>
+					</router-link>
 					<mu-list-item title="退出" @click="loginOut">
 						<mu-icon slot="left" value="undo" />
 					</mu-list-item>
@@ -115,7 +120,7 @@ menu
 	.portrait img {
 		width: 150px;
 		height: 150px;
-		border: 5px gold solid;
+		border: 2px #ccc solid;
 		border-radius: 75px;
 	}
 	

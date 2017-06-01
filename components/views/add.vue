@@ -84,8 +84,11 @@
 	}
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="less">
 	.add .content{
 		padding: 60px 10px 0;
 	}
+	.mu-raised-button-primary {
+    background-color: rgb(87, 194, 151);
+}
 </style>
